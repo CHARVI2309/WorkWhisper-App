@@ -3,12 +3,16 @@
  * HTML, CSS & JavaScript mini project with localStorage persistence
  */
 
-const STORAGE_KEY = 'taskflow-todos';
+const session = Auth.requireAuth();
 
 const state = {
   todos: [],
   filter: 'all',
 };
+
+function getStorageKey() {
+  return Auth.getTodosKey(session.userId);
+}
 
 // DOM Elements
 const form = document.getElementById('todo-form');
@@ -26,6 +30,10 @@ const progressText = document.getElementById('progress-text');
 const clearCompletedBtn = document.getElementById('clear-completed');
 const filterBtns = document.querySelectorAll('.filter-btn');
 const toastContainer = document.getElementById('toast-container');
+const userAvatar = document.getElementById('user-avatar');
+const userName = document.getElementById('user-name');
+const userEmail = document.getElementById('user-email');
+const logoutBtn = document.getElementById('logout-btn');
 
 const CIRCUMFERENCE = 2 * Math.PI * 15.5;
 
@@ -54,17 +62,23 @@ function showToast(message, type = 'success') {
 }
 
 function saveTodos() {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(state.todos));
+  localStorage.setItem(getStorageKey(), JSON.stringify(state.todos));
 }
 
 function loadTodos() {
   try {
-    const stored = localStorage.getItem(STORAGE_KEY);
+    const stored = localStorage.getItem(getStorageKey());
     state.todos = stored ? JSON.parse(stored) : [];
   } catch {
     state.todos = [];
     showToast('Could not load saved tasks', 'error');
   }
+}
+
+function setupUserBar() {
+  userName.textContent = session.name;
+  userEmail.textContent = session.email;
+  userAvatar.textContent = session.name.charAt(0).toUpperCase();
 }
 
 // ===== Todo Operations =====
@@ -342,6 +356,8 @@ filterBtns.forEach((btn) => {
 
 clearCompletedBtn.addEventListener('click', clearCompleted);
 
+logoutBtn.addEventListener('click', () => Auth.logout());
+
 document.addEventListener('keydown', (e) => {
   if (e.key === '/' && document.activeElement !== input) {
     e.preventDefault();
@@ -351,7 +367,10 @@ document.addEventListener('keydown', (e) => {
 
 // ===== Init =====
 
-loadTodos();
-updateCharCount();
-render();
-input.focus();
+if (session) {
+  setupUserBar();
+  loadTodos();
+  updateCharCount();
+  render();
+  input.focus();
+}
