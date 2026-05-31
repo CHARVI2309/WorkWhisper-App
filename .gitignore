@@ -2,3 +2,12 @@
 Thumbs.db
 desktop.ini
 *.log
+
+node_modules/
+.env
+*.log
+node_modules/
+.env
+build/
+*.log
+.DS_Store
