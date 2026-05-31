@@ -57,7 +57,12 @@ cd TaskFlow-App
 
 ## 📸 Screenshots
 
-> Login Page · Signup Page · Task Dashboard
+> Login Page <img width="752" height="1072" alt="login" src="https://github.com/user-attachments/assets/ac4a79ab-b5ef-4cfc-a521-aad7f297d58d" />
+
+>  Signup Page <img width="780" height="1081" alt="signup " src="https://github.com/user-attachments/assets/ac3a0ab9-e10b-4098-b905-acfda5760dbe" />
+
+>  Task Dashboard with a Demo User<img width="943" height="1081" alt="demo" src="https://github.com/user-attachments/assets/cdd0662e-e8b1-4c75-8bf7-1e831c15c5bd" />
+
 
 ---
 
