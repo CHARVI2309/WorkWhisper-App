@@ -43,12 +43,13 @@ TaskFlow-App/
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/CHARVI2309/TaskFlow-App.git
+https://github.com/CHARVI2309/WorkWhisper-App.git
+
 ```
 
 2. Open the project folder:
 ```bash
-cd TaskFlow-App
+cd WorkWhisper-App
 ```
 
 3. Open `index.html` in your browser — that's it! No installation needed.
