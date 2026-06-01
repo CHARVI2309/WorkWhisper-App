@@ -1,38 +1,15 @@
 /**
- * TaskFlow — Auth module (localStorage-based for demo)
+ * Work Whisper — Auth module (localStorage-based)
  * Note: For production apps, use a real backend with hashed passwords.
  */
 
 const Auth = {
-  USERS_KEY: 'taskflow-users',
-  SESSION_KEY: 'taskflow-session',
-  TODOS_PREFIX: 'taskflow-todos-',
-
-  DEMO_USER: {
-    id: 'user-demo',
-    name: 'Demo User',
-    email: 'demo@taskflow.com',
-    password: 'demo123',
-  },
-
-  DEMO_TODOS: [
-    { id: 'demo-1', text: 'Welcome to TaskFlow!', completed: false, createdAt: new Date().toISOString() },
-    { id: 'demo-2', text: 'Click the checkbox to complete a task', completed: false, createdAt: new Date().toISOString() },
-    { id: 'demo-3', text: 'Double-click a task to edit it', completed: true, createdAt: new Date().toISOString() },
-  ],
+  USERS_KEY: 'workwhisper-users',
+  SESSION_KEY: 'workwhisper-session',
+  TODOS_PREFIX: 'workwhisper-todos-',
 
   init() {
-    const users = this.getUsers();
-    const demoExists = users.some((u) => u.email === this.DEMO_USER.email);
-
-    if (!demoExists) {
-      users.push({ ...this.DEMO_USER });
-      this.saveUsers(users);
-      localStorage.setItem(
-        this.TODOS_PREFIX + this.DEMO_USER.id,
-        JSON.stringify(this.DEMO_TODOS)
-      );
-    }
+    // No demo user — users must sign up
   },
 
   getUsers() {
@@ -139,7 +116,6 @@ const Auth = {
   },
 
   requireAuth(redirectTo = 'login.html') {
-    this.init();
     if (!this.getSession()) {
       window.location.href = redirectTo;
       return null;
@@ -148,11 +124,8 @@ const Auth = {
   },
 
   redirectIfLoggedIn(redirectTo = 'index.html') {
-    this.init();
     if (this.getSession()) {
       window.location.href = redirectTo;
     }
   },
 };
-
-Auth.init();

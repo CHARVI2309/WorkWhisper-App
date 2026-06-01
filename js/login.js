@@ -5,7 +5,6 @@ const emailInput = document.getElementById('email');
 const passwordInput = document.getElementById('password');
 const formError = document.getElementById('form-error');
 const togglePassword = document.getElementById('toggle-password');
-const demoLoginBtn = document.getElementById('demo-login-btn');
 const toastContainer = document.getElementById('toast-container');
 
 function showToast(message, type = 'success') {
@@ -43,12 +42,6 @@ function handleLogin(email, password) {
 form.addEventListener('submit', (e) => {
   e.preventDefault();
   handleLogin(emailInput.value, passwordInput.value);
-});
-
-demoLoginBtn.addEventListener('click', () => {
-  emailInput.value = Auth.DEMO_USER.email;
-  passwordInput.value = Auth.DEMO_USER.password;
-  handleLogin(Auth.DEMO_USER.email, Auth.DEMO_USER.password);
 });
 
 togglePassword.addEventListener('click', () => {
