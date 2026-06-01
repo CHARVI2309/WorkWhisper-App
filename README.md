@@ -29,7 +29,7 @@ A clean and responsive **Todo / Task Manager** web application built with HTML, 
 ## 📁 Project Structure
 
 ```
-TaskFlow-App/
+WorkWhisper-App/
 ├── index.html       # Main todo app
 ├── login.html       # Login page
 ├── signup.html      # Signup page
@@ -58,11 +58,12 @@ cd WorkWhisper-App
 
 ## 📸 Screenshots
 
-> Login Page <img width="752" height="1072" alt="login" src="https://github.com/user-attachments/assets/ac4a79ab-b5ef-4cfc-a521-aad7f297d58d" />
+> Login Page <img width="1918" height="1087" alt="login ww" src="https://github.com/user-attachments/assets/b9cd5563-f514-471d-9cbd-46639803c981" />
 
->  Signup Page <img width="780" height="1081" alt="signup " src="https://github.com/user-attachments/assets/ac3a0ab9-e10b-4098-b905-acfda5760dbe" />
+>  Signup Page<img width="1918" height="1096" alt="signupww" src="https://github.com/user-attachments/assets/9934c236-647b-405d-9acb-be74508585b2" />
 
->  Task Dashboard with a Demo User<img width="943" height="1081" alt="demo" src="https://github.com/user-attachments/assets/cdd0662e-e8b1-4c75-8bf7-1e831c15c5bd" />
+
+>  Task Dashboard with a Demo User<img width="1918" height="1087" alt="DASHBOARDWW" src="https://github.com/user-attachments/assets/3c766f07-d37f-4514-a4fd-7464e51f35e4" />
 
 
 ---
