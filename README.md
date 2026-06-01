@@ -1,4 +1,4 @@
-# ✅ TaskFlow App
+# ✅ Work Whisper App
 
 A clean and responsive **Todo / Task Manager** web application built with HTML, CSS, and JavaScript — featuring user authentication with login and signup pages.
 
