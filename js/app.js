@@ -55,6 +55,7 @@ const modalBackdrop    = document.getElementById('modal-backdrop');
 const modalBody        = document.getElementById('modal-body');
 const modalConfirm     = document.getElementById('modal-confirm');
 const modalCancel      = document.getElementById('modal-cancel');
+const sidebarClose     = document.getElementById('sidebar-close');
 
 // ===== Utilities =====
 function generateId() {
@@ -574,6 +575,7 @@ clearCompletedBtn.addEventListener('click', clearCompleted);
 logoutBtn.addEventListener('click', () => Auth.logout());
 sidebarToggle.addEventListener('click', () => { sidebar.classList.contains('open') ? closeSidebar() : openSidebar(); });
 sidebarOverlay.addEventListener('click', closeSidebar);
+if (sidebarClose) sidebarClose.addEventListener('click', closeSidebar);
 
 document.addEventListener('keydown', (e) => {
   if (e.key === '/' && document.activeElement !== input && document.activeElement !== searchInput) {

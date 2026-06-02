@@ -71,7 +71,9 @@ body {
 .sidebar-header {
   padding: 1.25rem 1.25rem 1rem;
   border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between;
 }
+.sidebar-close { display: none; }
 
 .sidebar-logo {
   display: flex;
@@ -792,11 +794,13 @@ body {
 
 /* ===== Sidebar Overlay (mobile) ===== */
 .sidebar-overlay {
-  display: none; position: fixed; inset: 0;
+  position: fixed; inset: 0;
   background: rgba(0,0,0,0.6); z-index: 45;
-  opacity: 0; transition: opacity var(--transition);
+  opacity: 0; visibility: hidden;
+  transition: opacity var(--transition), visibility var(--transition);
+  pointer-events: none;
 }
-.sidebar-overlay.visible { opacity: 1; }
+.sidebar-overlay.visible { opacity: 1; visibility: visible; pointer-events: auto; }
 
 /* ===== Auth Pages ===== */
 .auth-body { display: block; min-height: 100vh; }
@@ -883,12 +887,11 @@ body {
   .brand-hero h2 { font-size: 1.6rem; }
 }
 
-@media (max-width: 700px) {
+@media (max-width: 768px) {
   .auth-brand-panel { display: none; }
   .auth-form-panel { padding: 2rem 1.25rem; align-items: flex-start; padding-top: 3rem; }
   .sidebar { transform: translateX(-100%); }
   .sidebar.open { transform: translateX(0); box-shadow: 4px 0 24px rgba(0,0,0,0.6); }
-  .sidebar-overlay { display: block; }
   .main-wrapper { margin-left: 0; }
   .sidebar-toggle { display: flex; }
   .topbar { padding: 0 1rem; }
@@ -897,17 +900,24 @@ body {
   .form-meta-row { flex-direction: column; align-items: stretch; }
   .form-meta-group { justify-content: space-between; }
   .meta-input { flex: 1; }
-  .task-toolbar { flex-direction: column; }
+  .task-toolbar { flex-direction: column; align-items: stretch; gap: 0.75rem; }
+  .search-wrapper { width: 100%; }
+  .sort-wrapper { width: 100%; }
   .sort-select { width: 100%; }
   .task-footer { flex-direction: column; gap: 0.75rem; text-align: center; }
   .todo-list { max-height: 55vh; }
   .modal-actions { flex-direction: column; }
   .modal-actions .btn { width: 100%; }
-}
-
-@media (max-width: 480px) {
   .todo-actions { opacity: 1; }
   .drag-handle { opacity: 1; }
+  .todo-input, .meta-input, .search-input, .todo-edit-input, .auth-input { font-size: 16px; }
+  .sidebar-close {
+    display: flex; align-items: center; justify-content: center;
+    background: transparent; border: none; color: var(--text-secondary);
+    cursor: pointer; padding: 0.4rem; border-radius: var(--radius-sm);
+    transition: all var(--transition);
+  }
+  .sidebar-close:hover { background: var(--bg-hover); color: var(--text-primary); }
 }
 
 @media (prefers-reduced-motion: reduce) {
