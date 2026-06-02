@@ -172,6 +172,10 @@ function toggleTodo(id) {
     saveTodos();
     render();
     showToast(todo.completed ? 'Task completed' : 'Task marked active');
+    // Check if ALL tasks are now done
+    if (todo.completed && state.todos.length > 0 && state.todos.every((t) => t.completed)) {
+      showAllDoneBanner();
+    }
   }
 }
 
@@ -327,6 +331,50 @@ function handleDrop(e, targetId) {
 function handleDragEnd(e) {
   e.target.classList.remove('dragging');
   document.querySelectorAll('.todo-item').forEach((el) => el.classList.remove('drag-over'));
+}
+
+// ===== All Tasks Done Banner =====
+const DONE_MESSAGES = [
+  '🎉 Outstanding work, {name}! Every task is done.',
+  '🏆 You crushed it, {name}! All tasks complete.',
+  '✨ Incredible, {name}! Your list is spotless.',
+  '🚀 Mission accomplished, {name}! Zero tasks remaining.',
+  '💪 You nailed it, {name}! Nothing left to do.',
+];
+
+function showAllDoneBanner() {
+  const banner = document.getElementById('all-done-banner');
+  const msg = DONE_MESSAGES[Math.floor(Math.random() * DONE_MESSAGES.length)]
+    .replace('{name}', session.name.split(' ')[0]);
+  banner.querySelector('.all-done-message').textContent = msg;
+  banner.classList.add('visible');
+  launchConfetti();
+  // Auto-dismiss after 5 seconds
+  setTimeout(() => dismissAllDoneBanner(), 5000);
+}
+
+function dismissAllDoneBanner() {
+  document.getElementById('all-done-banner').classList.remove('visible');
+}
+
+function launchConfetti() {
+  const container = document.getElementById('confetti-container');
+  container.innerHTML = '';
+  const colours = ['#7c3aed','#a78bfa','#34d399','#fbbf24','#f87171','#60a5fa','#f9a8d4'];
+  for (let i = 0; i < 80; i++) {
+    const piece = document.createElement('div');
+    piece.className = 'confetti-piece';
+    piece.style.cssText = `
+      left: ${Math.random() * 100}%;
+      background: ${colours[Math.floor(Math.random() * colours.length)]};
+      width: ${Math.random() * 8 + 5}px;
+      height: ${Math.random() * 8 + 5}px;
+      border-radius: ${Math.random() > 0.5 ? '50%' : '2px'};
+      animation-delay: ${Math.random() * 0.8}s;
+      animation-duration: ${Math.random() * 1.5 + 1.5}s;
+    `;
+    container.appendChild(piece);
+  }
 }
 
 // ===== Rendering =====

@@ -221,6 +221,24 @@
     </div>
   </div>
 
+  <!-- All tasks done banner -->
+  <div class="all-done-banner" id="all-done-banner" role="status" aria-live="polite" aria-hidden="true">
+    <div id="confetti-container" aria-hidden="true"></div>
+    <div class="all-done-inner">
+      <div class="all-done-icon" aria-hidden="true">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <circle cx="12" cy="12" r="10"/>
+          <polyline points="8 12 11 15 16 9"/>
+        </svg>
+      </div>
+      <p class="all-done-message">You did it!</p>
+      <p class="all-done-sub">Take a moment to celebrate — then add what's next.</p>
+      <button type="button" class="btn btn-primary all-done-dismiss" onclick="dismissAllDoneBanner()">
+        Sounds good!
+      </button>
+    </div>
+  </div>
+
   <div class="toast-container" id="toast-container" aria-live="assertive" aria-atomic="true"></div>
 
   <script src="js/auth.js"></script>
